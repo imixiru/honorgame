@@ -1,7 +1,12 @@
-<!DOCTYPE html><html><head><meta name="viewport" content="width=480,user-scalable=no"><style>#c{background:black;margin:auto;display:block;}</style></head><body><canvas id="c" width="480px" height="640px"></canvas><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><h1>Нажми и играй!
+<!DOCTYPE html><html><head><meta name="viewport" content="width=480,user-scalable=no"><style>#c{background:black;margin:auto;display:block;}</style></head><body>
+<audio controls autoplay="autoplay">
+<source src="m.mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="c" width="480px" height="640px"></canvas><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><h1>Нажми и играй!
 	Набрав 15 очков, отправь мне https://vk.com/svatg видео своей игры и получи 1000</h1><br> <i>Правила:</i>  Чем дальше от центра, тем на больший угол изменяется траектория движения<br>
 По всем вопросам ко мне в личку<br>Через код элемента или другие хитрости приp не получаете
-После достижение 15 очков мне приходит уведомление о том, что вы прошли</body><script>
+После достижение 15 очков мне приходит уведомление о том, что вы прошли!</body><script>
 
 arr=l=>[...Array(l).keys()]
 const w = 480,
@@ -116,7 +121,7 @@ function drlp()
 function die()
 {
 	clearInterval(phtmr)
-	
+
 swal("Good job!", "Your score:" + score, "success", {
   button: "Once again!",
 });
@@ -145,15 +150,11 @@ function phl()
 	if (~~(sc/300)!=~~((ns)/300)) spwn(~~(ra()*9))
 	sc=ns
 
-	pos.y>h 
-        pos.x>480 
-        pos.x<0 
-        if(score>13){
-die()
-}
-   
+	pos.y>h && die()
+        pos.x>480 && die()
+        pos.x<0 && die()
 
-	for(ob of o){dist(scr(ob,1),pos)<23 }
+	for(ob of o){dist(scr(ob,1),pos)<23 && die()}
 
 	b=b.filter((bo)=>dist(scr(bo,1),pos)>23||(score++&&!1))
 }
